@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`findRoute no route found 1`] = `Array []`;
+
+exports[`findRoute return direct route 1`] = `
+Array [
+  "BLP0530",
+]
+`;
+
+exports[`findRoute route with one stop over 1`] = `
+Array [
+  "BLP0530",
+  "BPM0645",
+]
+`;
+
+exports[`findRoute route with three stop overs 1`] = `
+Array [
+  "CLA0445",
+  "CAW0445",
+  "TWS0515",
+]
+`;

@@ -1,4 +1,7 @@
 import _ from 'lodash';
+import config from '../config';
+
+const { LIMIT_DESTINATION_DEPTH } = config;
 
 export function fetchGet(url) {
   return fetch(url).then(responseHandler);
@@ -31,6 +34,15 @@ export function getAllDestinations(deals = []) {
   return result;
 }
 
+/**
+ * This function returns list of reference ids
+ * ['REF123', 'REF23']
+ * Algorithm:
+ * 1. Group all deals by departure and filter arrival by value {London: {Amsterdam : {...deal}}}
+ * 2. Assigne direct route as best if exists
+ * 3. Recursivly iterate over departure options
+ * 4. Stop recursive search when: depth 20 or nextBest.value > currentBest.value
+ */
 export function findRoute(deals = [], departure, arrival, filter) {
   const filterName = getSortingField(filter);
   const bestRoutes = deals.reduce((routes, deal) => {
@@ -74,7 +86,7 @@ export function findRoute(deals = [], departure, arrival, filter) {
     } else {
       for (let cityName in bestRoutes[from]) {
         const nextDeal = bestRoutes[from][cityName];
-        if ((nextBest.path.length < 20 && bestRoute.value === 0) || nextBest.value < bestRoute.value) {
+        if ((nextBest.path.length < LIMIT_DESTINATION_DEPTH && bestRoute.value === 0) || nextBest.value < bestRoute.value) {
           nextBest.value += nextDeal[filterName];
           nextBest.path.push(nextDeal.reference);
           return findIndirectRoutes(nextDeal.arrival, arrival, nextBest);
