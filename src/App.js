@@ -1,18 +1,57 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import SearchForm from './containers/SearchForm';
+import DealsList from './containers/DealsList';
+import { getAllDeals } from './services/deals';
+import { findRoute } from './utils';
 import './App.css';
 
 class App extends Component {
+  state = {
+    showDeals: false,
+    currency: 'EUR',
+    deals: [],
+    tripRoute: [],
+    departure: '',
+    arrival: '',
+    filter: '',
+  }
+
+  componentWillMount() {
+    getAllDeals()
+      .then(({ currency, deals }) => this.setState({ currency, deals }))
+      .catch((error) => console.error('Error getAllDeals', error));
+  }
+
+  onSearch = (departure, arrival, filter) => {
+    console.log('departure, arrival, filter', departure, arrival, filter);
+    const tripRoute = findRoute(this.state.deals, departure, arrival, filter);
+    console.log('onSearch.results', tripRoute);
+    this.setState({ showDeals: true, tripRoute, departure, arrival, filter });
+  }
+
+  onReset = () => {
+    this.setState({ showDeals: false });
+  }
+
   render() {
+    const { showDeals, deals, tripRoute, currency, departure, arrival, filter } = this.state;
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        {showDeals ? 
+          <DealsList
+            triggerReset={this.onReset}
+            deals={deals}
+            tripRoute={tripRoute}
+            currency={currency}
+            /> :
+          <SearchForm
+            triggerSearch={this.onSearch}
+            deals={deals}
+            departure={departure}
+            arrival={arrival}
+            filter={filter} 
+            />
+        }
       </div>
     );
   }
