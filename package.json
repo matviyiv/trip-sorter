@@ -13,13 +13,15 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "precommit": "yarn test -- --coverage"
   },
   "homepage": "https://matviyiv.github.io/trip-sorter/",
   "devDependencies": {
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "gh-pages": "^1.2.0",
+    "husky": "^0.14.3",
     "react-addons-test-utils": "^15.6.2"
   }
 }
