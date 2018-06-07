@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "TripSorter",
+  "name": "Small app to filter trip deals",
   "icons": [
     {
       "src": "favicon.ico",

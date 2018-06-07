@@ -4,7 +4,7 @@ import config from '../config';
 const { LIMIT_DESTINATION_DEPTH } = config;
 
 export function fetchGet(url) {
-  return fetch(url).then(responseHandler);
+  return fetch(document.URL + url).then(responseHandler);
 }
 
 function responseHandler(res) {
