@@ -23,9 +23,7 @@ class App extends Component {
   }
 
   onSearch = (departure, arrival, filter) => {
-    console.log('departure, arrival, filter', departure, arrival, filter);
     const tripRoute = findRoute(this.state.deals, departure, arrival, filter);
-    console.log('onSearch.results', tripRoute);
     this.setState({ showDeals: true, tripRoute, departure, arrival, filter });
   }
 
