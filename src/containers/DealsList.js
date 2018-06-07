@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import './DealsList.css';
+
 import { getRealCost, durationToMin, durationToString } from '../utils';
 
 export default class SearchForm extends Component {
@@ -36,32 +38,47 @@ export default class SearchForm extends Component {
     dealsList.forEach((deal) => {
       const realCost = getRealCost(deal);
       routesList.push((
-        <li key={deal.reference}>
-          <div>{deal.departure} > {deal.arrival}</div>
-          {deal.discount ?
-            <div><s>{deal.cost}{currency}</s>{realCost}{currency}</div> :
-            <div>{deal.cost}{currency}</div>
-          }
-          <div>{deal.transport} {deal.reference} for {deal.duration.h}h {deal.duration.m}</div>
+        <li key={deal.reference} className="list-group-item">
+          <div className="bmd-list-group-col">
+            <div className="list-group-item-heading">
+              <div className="deals-list--item-heading">{deal.departure} > {deal.arrival}</div>
+              <div className="deals-list--item-price">
+              {
+                deal.discount ?
+                  <div><s><span className="red">{deal.cost}{currency}</span></s><span className="green">{realCost}{currency}</span></div> :
+                  <div>{deal.cost}{currency}</div>
+              }
+              </div>
+            </div>
+            <div className="list-group-item-text">
+              
+              <div>{deal.transport} {deal.reference} for {deal.duration.h}h {deal.duration.m}</div>
+            </div>
+          </div>
         </li>
       ));
       totalPrice += realCost;
       totalDuration += durationToMin(deal.duration);
     });
 
-    routesList.push((<li key="total">Total: {durationToString(totalDuration)} {totalPrice}{currency}</li>));
+    routesList.push((
+      <li key="total" className="list-group-item">
+        Total: Duration: <span className="green">{durationToString(totalDuration)} </span> Price: <span className="green">{totalPrice}{currency}</span>
+      </li>
+    ));
 
     return routesList;
   }
 
   render() {
     return (
-      <div>
+      <div className="deals-list">
         <h2>Route description</h2>
-        <ul>
+        <ul className="list-group">
           {this.renderRoutes()}
         </ul>
-        <button onClick={this.onReset}>Reset</button>
+        <hr></hr>
+        <button className="btn btn-raised btn-secondary" onClick={this.onReset}>Reset</button>
       </div>
     )
   }

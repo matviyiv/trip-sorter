@@ -1,0 +1,19 @@
+
+.radio-holder {
+  margin: 5px;
+}
+.search-form {
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  border-width: .2rem;
+  position: relative;
+  padding: 1rem;
+  margin: 1rem -15px;
+}
+.radio label, label {
+  margin-right: 10px;
+}
+.search-form .btn {
+  float: right;
+}

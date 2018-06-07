@@ -12,7 +12,7 @@ describe('SearchForm', () => {
 
   it('renders without crashing', () => {
     const wrapper = shallow(<SearchForm />);
-    const title = <h2>SearchForm</h2>;
+    const title = <h2>Trip Sorter</h2>;
     expect(wrapper.contains(title)).toEqual(true);
   });
 
@@ -22,10 +22,10 @@ describe('SearchForm', () => {
     expect(wrapper.contains(text)).toEqual(true);
   });
 
-  it('submit invalid form shoudl show error', () => {
+  it('submit invalid form should show error', () => {
     const wrapper = shallow(<SearchForm />);
     const text = 'Please select departure';
-    wrapper.find('button').simulate('click');
+    wrapper.find('button').simulate('click', { preventDefault: jest.fn() });
     expect(wrapper.contains(text)).toEqual(true);
   });
 
@@ -37,9 +37,9 @@ describe('SearchForm', () => {
   it('trigger search with valid params', () => {
     const triggerSearch = jest.fn();
     const wrapper = shallow(<SearchForm deals={deals} triggerSearch={triggerSearch}/>);
-    wrapper.find('select.departure').simulate('change', { target: { value: 'London' }});
-    wrapper.find('select.arrival').simulate('change', { target: { value: 'Kyiv' }});
-    wrapper.find('button').simulate('click');
+    wrapper.find('select#departure').simulate('change', { target: { value: 'London' }});
+    wrapper.find('select#arrival').simulate('change', { target: { value: 'Kyiv' }});
+    wrapper.find('button').simulate('click', { preventDefault: jest.fn() });
     expect(triggerSearch).toBeCalledWith('London', 'Kyiv', 'cheapest');
   });
 });

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import './SearchForm.css';
+
 import { getAllDestinations } from '../utils';
 
 const CHEAPEST_FILTER = 'cheapest';
@@ -54,8 +56,9 @@ export default class SearchForm extends Component {
     this.setState({ departureList, arrivalList });
   }
 
-  onSearch = () => {
+  onSearch = (e) => {
     const { departure, arrival, filter } = this.state;
+    e.preventDefault();
 
     if (!departure) {
       return this.setState({ invalidForm: { message: 'Please select departure' }})
@@ -78,7 +81,12 @@ export default class SearchForm extends Component {
 
   renderDropdown(fieldName, options) {
     return (
-      <select onChange={this.onDropdownChange(fieldName)} value={this.state[fieldName]} className={fieldName} >
+      <select 
+        onChange={this.onDropdownChange(fieldName)}
+        value={this.state[fieldName]}
+        id={fieldName}
+        className="form-control"
+        >
         <option key={1} value="1"></option>
         {options.map((option) => {
           return (<option key={option} value={option}>{option}</option>);
@@ -90,16 +98,20 @@ export default class SearchForm extends Component {
   renderFilters() {
     const { filter } = this.state;
     return (
-    <div>
-      <label>
-          <input type="radio" value={CHEAPEST_FILTER} checked={filter === CHEAPEST_FILTER} onChange={this.onOptionChange} />
-          Cheapest
-        </label>
+    <span className="radio-holder">
+      <div className="radio">
         <label>
-          <input type="radio" value="fastest" checked={filter === FASTEST_FILTER} onChange={this.onOptionChange} />
-          Fastest
-        </label>
-    </div>
+            <input type="radio" value={CHEAPEST_FILTER} checked={filter === CHEAPEST_FILTER} onChange={this.onOptionChange} />
+            <span class="bmd-radio"></span>
+            Cheapest
+          </label>
+          <label>
+            <input type="radio" value="fastest" checked={filter === FASTEST_FILTER} onChange={this.onOptionChange} />
+            <span class="bmd-radio"></span>
+            Fastest
+          </label>
+      </div>
+    </span>
     );
   }
 
@@ -110,21 +122,30 @@ export default class SearchForm extends Component {
     const arrivalOptions = arrivalList.filter((item) => item !== departure);
     
     return (
-      <div>
-        <h2>SearchForm</h2>
+      <div className="search-form">
+        <h2>Trip Sorter</h2>
         {message}
         {!deals.length && 'Loading all possible destinations...'}
-        <br />
-        <label>
-          From:
-          {this.renderDropdown('departure', departureOptions)}
-        </label>
-        <label>
-          To:
-          {this.renderDropdown('arrival', arrivalOptions)}
-        </label>
-        {this.renderFilters()}
-        <button onClick={this.onSearch}>Search</button>
+        <form>
+          <div className="bmd-form-group is-filled">
+            <label for="departure" className="bmd-label-floating">
+              From
+            </label>
+            {this.renderDropdown('departure', departureOptions)}
+          </div>
+          <div className="bmd-form-group is-filled">
+            <label for="arrival" className="bmd-label-floating">
+              To
+            </label>
+            {this.renderDropdown('arrival', arrivalOptions)}
+          </div>
+          <div className="form-group">
+            {this.renderFilters()}
+          </div>
+          <button onClick={this.onSearch} className="btn btn-primary btn-raised">
+            Search
+          </button>
+        </form>
       </div>
     )
   }

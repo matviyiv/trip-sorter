@@ -1,3 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DealsList renders route description 1`] = `"<div><h2>Route description</h2><ul><li><div>London &gt; Amsterdam</div><div>160</div><div>train TLA0500 for 05h 00</div></li><li>Total: 5h0 160</li></ul><button>Reset</button></div>"`;
+exports[`DealsList renders route description 1`] = `"<div class=\\"deals-list\\"><h2>Route description</h2><ul class=\\"list-group\\"><li class=\\"list-group-item\\"><div class=\\"bmd-list-group-col\\"><div class=\\"list-group-item-heading\\"><div class=\\"deals-list--item-heading\\">London &gt; Amsterdam</div><div class=\\"deals-list--item-price\\"><div>160</div></div></div><div class=\\"list-group-item-text\\"><div>train TLA0500 for 05h 00</div></div></div></li><li class=\\"list-group-item\\">Total: Duration: <span class=\\"green\\">5h0 </span> Price: <span class=\\"green\\">160</span></li></ul><hr/><button class=\\"btn btn-raised btn-secondary\\">Reset</button></div>"`;
