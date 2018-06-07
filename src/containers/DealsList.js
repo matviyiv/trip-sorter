@@ -57,7 +57,7 @@ export default class SearchForm extends Component {
   render() {
     return (
       <div>
-        <h2>DealsList</h2>
+        <h2>Route description</h2>
         <ul>
           {this.renderRoutes()}
         </ul>

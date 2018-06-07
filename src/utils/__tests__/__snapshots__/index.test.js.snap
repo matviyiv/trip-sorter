@@ -1,24 +1,65 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`findRoute no route found 1`] = `Array []`;
+exports[`utils.index findRoute no route found 1`] = `Array []`;
 
-exports[`findRoute return direct route 1`] = `
+exports[`utils.index findRoute return direct route 1`] = `
 Array [
   "BLP0530",
 ]
 `;
 
-exports[`findRoute route with one stop over 1`] = `
+exports[`utils.index findRoute route with one stop over 1`] = `
 Array [
   "BLP0530",
   "BPM0645",
 ]
 `;
 
-exports[`findRoute route with three stop overs 1`] = `
+exports[`utils.index findRoute route with three stop overs 1`] = `
 Array [
   "CLA0445",
   "CAW0445",
   "TWS0515",
 ]
+`;
+
+exports[`utils.index getAllDestinations should return departureList and arrivalList 1`] = `
+Object {
+  "arrivalList": Array [
+    "Amsterdam",
+    "Paris",
+    "Warsaw",
+    "Brussels",
+    "London",
+    "Stockholm",
+    "Prague",
+    "Moscow",
+    "Madrid",
+    "Geneva",
+    "Budapest",
+    "Kiev",
+    "Lisbon",
+    "Rome",
+    "Athens",
+    "Istanbul",
+  ],
+  "departureList": Array [
+    "London",
+    "Amsterdam",
+    "Warsaw",
+    "Stockholm",
+    "Paris",
+    "Brussels",
+    "Prague",
+    "Moscow",
+    "Madrid",
+    "Geneva",
+    "Budapest",
+    "Kiev",
+    "Lisbon",
+    "Rome",
+    "Athens",
+    "Istanbul",
+  ],
+}
 `;

@@ -56,6 +56,7 @@ export default class SearchForm extends Component {
 
   onSearch = () => {
     const { departure, arrival, filter } = this.state;
+
     if (!departure) {
       return this.setState({ invalidForm: { message: 'Please select departure' }})
     }
@@ -67,17 +68,17 @@ export default class SearchForm extends Component {
     this.props.triggerSearch(departure, arrival, filter);
   }
 
-  onDropdownChange = (filedName) => (event) => {
-    this.setState({ [filedName]: event.target.value, invalidForm: {} });
+  onDropdownChange = (fieldName) => (event) => {
+    this.setState({ [fieldName]: event.target.value, invalidForm: {} });
   }
 
   onOptionChange = (event) => {
     this.setState({ filter: event.target.value });
   }
 
-  renderDropdown(filedName, options) {
+  renderDropdown(fieldName, options) {
     return (
-      <select onChange={this.onDropdownChange(filedName)} value={this.state[filedName]} >
+      <select onChange={this.onDropdownChange(fieldName)} value={this.state[fieldName]} className={fieldName} >
         <option key={1} value="1"></option>
         {options.map((option) => {
           return (<option key={option} value={option}>{option}</option>);

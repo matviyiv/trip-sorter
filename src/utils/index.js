@@ -118,11 +118,11 @@ function getSortingField(filter) {
   return filter === 'cheapest' ? 'cost' : 'duration';
 }
 
-export function durationToMin(duration) {
+export function durationToMin(duration = {}) {
   return (+duration.h * 60) + (+duration.m);
 }
 
-export function getRealCost(deal) {
+export function getRealCost(deal = {}) {
   if (deal.discount > 0) {
     return deal.cost - (deal.cost * (deal.discount/100).toFixed(2));
   }
