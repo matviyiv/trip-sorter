@@ -796,7 +796,7 @@
     {
       "transport": "train",
       "departure": "Moscow",
-      "arrival": "Kiev",
+      "arrival": "Kyiv",
       "duration": {
         "h": "05",
         "m": "15"
@@ -808,7 +808,7 @@
     {
       "transport": "bus",
       "departure": "Moscow",
-      "arrival": "Kiev",
+      "arrival": "Kyiv",
       "duration": {
         "h": "07",
         "m": "00"
@@ -820,7 +820,7 @@
     {
       "transport": "car",
       "departure": "Moscow",
-      "arrival": "Kiev",
+      "arrival": "Kyiv",
       "duration": {
         "h": "04",
         "m": "15"
@@ -1156,7 +1156,7 @@
     {
       "transport": "train",
       "departure": "Budapest",
-      "arrival": "Kiev",
+      "arrival": "Kyiv",
       "duration": {
         "h": "05",
         "m": "15"
@@ -1168,7 +1168,7 @@
     {
       "transport": "bus",
       "departure": "Budapest",
-      "arrival": "Kiev",
+      "arrival": "Kyiv",
       "duration": {
         "h": "05",
         "m": "15"
@@ -1180,7 +1180,7 @@
     {
       "transport": "car",
       "departure": "Budapest",
-      "arrival": "Kiev",
+      "arrival": "Kyiv",
       "duration": {
         "h": "05",
         "m": "15"
@@ -1263,7 +1263,7 @@
     },
     {
       "transport": "train",
-      "departure": "Kiev",
+      "departure": "Kyiv",
       "arrival": "Moscow",
       "duration": {
         "h": "05",
@@ -1275,7 +1275,7 @@
     },
     {
       "transport": "bus",
-      "departure": "Kiev",
+      "departure": "Kyiv",
       "arrival": "Moscow",
       "duration": {
         "h": "05",
@@ -1287,7 +1287,7 @@
     },
     {
       "transport": "car",
-      "departure": "Kiev",
+      "departure": "Kyiv",
       "arrival": "Moscow",
       "duration": {
         "h": "05",
@@ -1299,7 +1299,7 @@
     },
     {
       "transport": "train",
-      "departure": "Kiev",
+      "departure": "Kyiv",
       "arrival": "Istanbul",
       "duration": {
         "h": "04",
@@ -1311,7 +1311,7 @@
     },
     {
       "transport": "bus",
-      "departure": "Kiev",
+      "departure": "Kyiv",
       "arrival": "Istanbul",
       "duration": {
         "h": "06",
@@ -1323,7 +1323,7 @@
     },
     {
       "transport": "car",
-      "departure": "Kiev",
+      "departure": "Kyiv",
       "arrival": "Istanbul",
       "duration": {
         "h": "04",
@@ -1335,7 +1335,7 @@
     },
     {
       "transport": "train",
-      "departure": "Kiev",
+      "departure": "Kyiv",
       "arrival": "Budapest",
       "duration": {
         "h": "05",
@@ -1347,7 +1347,7 @@
     },
     {
       "transport": "bus",
-      "departure": "Kiev",
+      "departure": "Kyiv",
       "arrival": "Budapest",
       "duration": {
         "h": "06",
@@ -1359,7 +1359,7 @@
     },
     {
       "transport": "car",
-      "departure": "Kiev",
+      "departure": "Kyiv",
       "arrival": "Budapest",
       "duration": {
         "h": "04",
@@ -1660,7 +1660,7 @@
     {
       "transport": "train",
       "departure": "Istanbul",
-      "arrival": "Kiev",
+      "arrival": "Kyiv",
       "duration": {
         "h": "05",
         "m": "30"
@@ -1672,7 +1672,7 @@
     {
       "transport": "bus",
       "departure": "Istanbul",
-      "arrival": "Kiev",
+      "arrival": "Kyiv",
       "duration": {
         "h": "05",
         "m": "30"
@@ -1684,7 +1684,7 @@
     {
       "transport": "car",
       "departure": "Istanbul",
-      "arrival": "Kiev",
+      "arrival": "Kyiv",
       "duration": {
         "h": "05",
         "m": "00"
