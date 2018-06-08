@@ -1,7 +1,4 @@
 import _ from 'lodash';
-import config from '../config';
-
-const { LIMIT_DESTINATION_DEPTH } = config;
 
 export function fetchGet(url) {
   return fetch(document.URL + url).then(responseHandler);
@@ -107,7 +104,7 @@ export function findRoute(deals = [], departure, arrival, filter) {
       }
 
       const previousCity = nextBest.cityList.pop();
-      const previousRef = nextBest.path.pop();
+      nextBest.path.pop();
       return findIndirectRoutes(previousCity, arrival, nextBest);
     }
   }
