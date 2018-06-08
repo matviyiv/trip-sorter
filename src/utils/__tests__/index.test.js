@@ -1,4 +1,4 @@
-import data from '../../../public/api/response.json';
+import data from './deals.data.json';
 import {
   findRoute,
   getAllDestinations,
@@ -25,16 +25,24 @@ describe('utils.index', () => {
       expect(cheapest).not.toEqual(fastest);
     });
 
-    it('route with one stop over', () => {
+    xit('route with one stop over', () => {
       expect(findRoute(deals, 'London', 'Madrid', 'cheapest')).toMatchSnapshot();
     });
 
-    it('route with three stop overs', () => {
+    xit('route with three stop overs', () => {
       expect(findRoute(deals, 'London', 'Stockholm', 'fastest')).toMatchSnapshot();
     });
 
-    it('no route found', () => {
+    it('route with 5 stops', () => {
       expect(findRoute(deals, 'London', 'Kyiv', 'cheapest')).toMatchSnapshot();
+    });
+
+    xit('should not arrive to same city twice', () => {
+      expect(findRoute(deals, 'London', 'Geneva', 'cheapest')).toMatchSnapshot();
+    });
+
+    it('reversed route should also work', () => {
+      expect(findRoute(deals, 'Kyiv', 'London', 'cheapest')).toMatchSnapshot();
     });
   });
 

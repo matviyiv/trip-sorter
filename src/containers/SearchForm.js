@@ -101,15 +101,15 @@ export default class SearchForm extends Component {
     <span className="radio-holder">
       <div className="radio">
         <label>
-            <input type="radio" value={CHEAPEST_FILTER} checked={filter === CHEAPEST_FILTER} onChange={this.onOptionChange} />
-            <span class="bmd-radio"></span>
-            Cheapest
-          </label>
-          <label>
-            <input type="radio" value="fastest" checked={filter === FASTEST_FILTER} onChange={this.onOptionChange} />
-            <span class="bmd-radio"></span>
-            Fastest
-          </label>
+          <input type="radio" value={CHEAPEST_FILTER} checked={filter === CHEAPEST_FILTER} onChange={this.onOptionChange} />
+          <span className="bmd-radio"></span>
+          Cheapest
+        </label>
+        <label>
+          <input type="radio" value="fastest" checked={filter === FASTEST_FILTER} onChange={this.onOptionChange} />
+          <span className="bmd-radio"></span>
+          Fastest
+        </label>
       </div>
     </span>
     );
@@ -128,13 +128,13 @@ export default class SearchForm extends Component {
         {!deals.length && 'Loading all possible destinations...'}
         <form>
           <div className="bmd-form-group is-filled">
-            <label for="departure" className="bmd-label-floating">
+            <label htmlFor="departure" className="bmd-label-floating">
               From
             </label>
             {this.renderDropdown('departure', departureOptions)}
           </div>
           <div className="bmd-form-group is-filled">
-            <label for="arrival" className="bmd-label-floating">
+            <label htmlFor="arrival" className="bmd-label-floating">
               To
             </label>
             {this.renderDropdown('arrival', arrivalOptions)}

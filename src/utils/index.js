@@ -41,7 +41,10 @@ export function getAllDestinations(deals = []) {
  * 1. Group all deals by departure and filter arrival by value {London: {Amsterdam : {...deal}}}
  * 2. Assigne direct route as best if exists
  * 3. Recursivly iterate over departure options
- * 4. Stop recursive search when: depth 20 or nextBest.value > currentBest.value
+ * 4. Stop recursive search when: 
+ *    nextBest.value > currentBest.value, 
+ *    reference already used,
+ *    city already visited
  */
 export function findRoute(deals = [], departure, arrival, filter) {
   const filterName = getSortingField(filter);
@@ -68,9 +71,8 @@ export function findRoute(deals = [], departure, arrival, filter) {
     bestRoute.path.push(bestRoutes[departure][arrival].reference);
     bestRoute.value = bestRoutes[departure][arrival][filterName];
   };
-
   Object.values(bestRoutes[departure]).forEach((deal) => {
-    let nextBest = { path: [deal.reference], value: deal[filterName] };
+    let nextBest = { path: [deal.reference], value: deal[filterName], cityList: [departure, deal.arrival] };
     nextBest = findIndirectRoutes(deal.arrival, arrival, nextBest);
     if ((bestRoute.value === 0 && nextBest) || (nextBest && nextBest.value < bestRoute.value)) {
       bestRoute = nextBest;
@@ -78,22 +80,35 @@ export function findRoute(deals = [], departure, arrival, filter) {
   });
 
   function findIndirectRoutes(from, to, nextBest) {
-    const deal = bestRoutes[from][to];
+    const deal = _.get(bestRoutes, `${from}.${to}`);
     if (deal) {
       nextBest.value += deal[filterName];
       nextBest.path.push(deal.reference);
+      nextBest.cityList.push(to);
       return nextBest;
     } else {
       for (let cityName in bestRoutes[from]) {
         const nextDeal = bestRoutes[from][cityName];
-        if ((nextBest.path.length < LIMIT_DESTINATION_DEPTH && bestRoute.value === 0) || nextBest.value < bestRoute.value) {
+        if (
+            !_.includes(nextBest.path, nextDeal.reference)
+            && !_.includes(nextBest.cityList, nextDeal.arrival)
+            && (bestRoute.value === 0 || nextBest.value < bestRoute.value)
+          ) {
           nextBest.value += nextDeal[filterName];
-          nextBest.path.push(nextDeal.reference);
+          nextBest.path = [ ...nextBest.path, nextDeal.reference];
+          nextBest.cityList = [ ...nextBest.cityList, nextDeal.arrival];
           return findIndirectRoutes(nextDeal.arrival, arrival, nextBest);
         } else {
-          return null;
+          continue;
         }
       }
+      if (nextBest.path.length <= 1) {
+        return null;
+      }
+
+      const previousCity = nextBest.cityList.pop();
+      const previousRef = nextBest.path.pop();
+      return findIndirectRoutes(previousCity, arrival, nextBest);
     }
   }
 

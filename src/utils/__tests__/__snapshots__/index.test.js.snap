@@ -1,10 +1,35 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`utils.index findRoute no route found 1`] = `Array []`;
-
 exports[`utils.index findRoute return direct route 1`] = `
 Array [
   "BLP0530",
+]
+`;
+
+exports[`utils.index findRoute reversed route should also work 1`] = `
+Array [
+  "BKM0500",
+  "BMS0600",
+  "BSW0545",
+  "BWP0615",
+  "BPB0700",
+  "BAI0530",
+  "BIA0515",
+  "BAR0600",
+  "BRG0700",
+  "BGB0515",
+  "BBA0515",
+  "BAL0545",
+]
+`;
+
+exports[`utils.index findRoute route with 5 stops 1`] = `
+Array [
+  "BLA0745",
+  "BAW0515",
+  "BWS0515",
+  "BSM0530",
+  "BMK0700",
 ]
 `;
 
@@ -23,6 +48,14 @@ Array [
 ]
 `;
 
+exports[`utils.index findRoute should not arrive to same city twice 1`] = `
+Array [
+  "BLP0530",
+  "BPB0630",
+  "BBG0715",
+]
+`;
+
 exports[`utils.index getAllDestinations should return departureList and arrivalList 1`] = `
 Object {
   "arrivalList": Array [
@@ -37,7 +70,7 @@ Object {
     "Madrid",
     "Geneva",
     "Budapest",
-    "Kiev",
+    "Kyiv",
     "Lisbon",
     "Rome",
     "Athens",
@@ -55,7 +88,7 @@ Object {
     "Madrid",
     "Geneva",
     "Budapest",
-    "Kiev",
+    "Kyiv",
     "Lisbon",
     "Rome",
     "Athens",
